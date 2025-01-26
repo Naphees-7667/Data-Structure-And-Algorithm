@@ -43,3 +43,7 @@ public:
         return result;
     }
 };
+
+int main(){
+    return 0;
+}
