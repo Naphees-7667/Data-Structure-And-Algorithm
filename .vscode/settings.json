@@ -1,0 +1,21 @@
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "iostream": "cpp",
+        "cmath": "cpp",
+        "numeric": "cpp",
+        "regex": "cpp",
+        "random": "cpp",
+        "new": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "functional": "cpp",
+        "array": "cpp",
+        "ratio": "cpp",
+        "type_traits": "cpp",
+        "*.tcc": "cpp",
+        "unordered_map": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
