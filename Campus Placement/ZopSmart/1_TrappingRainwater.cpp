@@ -1,5 +1,3 @@
-// Trapping Rainwater Problem  
-
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -8,20 +6,23 @@ int trap(vector < int > & height) {
   int left = 0, right = n - 1;
   int res = 0;
   int maxLeft = 0, maxRight = 0;
-  while (left <= right) {
+  while (left < right) {
+
     if (height[left] <= height[right]) {
-      if (height[left] >= maxLeft) {
-        maxLeft = height[left];
-      } else {
+
+      if (height[left] <= maxLeft) {
         res += maxLeft - height[left];
-      }
+      } 
+
+      else maxLeft = height[left];
       left++;
-    } else {
-      if (height[right] >= maxRight) {
-        maxRight = height[right];
-      } else {
+    } 
+    else {
+      if (height[right] <= maxRight) {
         res += maxRight - height[right];
-      }
+        
+      } 
+      else maxRight = height[right];
       right--;
     }
   }
