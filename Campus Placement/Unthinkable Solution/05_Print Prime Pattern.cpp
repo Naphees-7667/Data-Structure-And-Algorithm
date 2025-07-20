@@ -94,3 +94,82 @@ for (int i = 1; i <= n; i++) {
     }
     cout << endl;
 }
+
+---------------------------------------------------------
+/*
+✅ Sieve of Eratosthenes – Algorithm / Pseudocode
+🧠 Idea:
+Mark all numbers as prime initially. Then, starting from 2, eliminate all multiples of each prime number (i.e., mark them as not prime).
+
+🔢 Pseudocode:
+
+Function sieve(n):
+1. Create a boolean array isPrime[0..n] and initialize all as true
+   (isPrime[i] = true means "i is assumed to be prime")
+2. Set isPrime[0] and isPrime[1] = false
+
+3. For i from 2 to √n:
+    If isPrime[i] is true:
+        For j from i*i to n, increment by i:
+            → Set isPrime[j] = false
+
+4. All indices i where isPrime[i] is true are prime numbers
+
+🧮 Example for n = 30:
+Start with:
+
+isPrime = [false, false, true, true, true, ..., true]
+Cross off multiples of 2 → 4, 6, 8, …
+Then 3 → 9, 12, 15, …
+Then 5 → 25, 30
+(We stop at √30 ≈ 5)
+
+Remaining true indices are:
+2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+
+🧪 Sample Input/Output:
+Input:
+n = 30
+Output:
+Prime numbers up to 30 are:
+2 3 5 7 11 13 17 19 23 29
+*/
+
+✅ C++ Code: Sieve of Eratosthenes
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void sieve(int n) {
+    vector<bool> isPrime(n + 1, true); // index 0 to n
+    isPrime[0] = isPrime[1] = false;
+
+    for (int i = 2; i * i <= n; i++) {
+        if (isPrime[i]) {
+            for (int j = i * i; j <= n; j += i) {
+                isPrime[j] = false;
+            }
+        }
+    }
+
+    // Output all primes
+    cout << "Prime numbers up to " << n << " are:\n";
+    for (int i = 2; i <= n; i++) {
+        if (isPrime[i])
+            cout << i << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int n;
+    cout << "Enter the value of n: ";
+    cin >> n;
+
+    sieve(n);
+
+    return 0;
+}
+
+Time Complexity -> O(nlog logn)
